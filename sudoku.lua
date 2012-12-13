@@ -15,8 +15,6 @@ function get_box(a,b)
 
 	end
 	return unique(box_array)
-	--a[(x*3)-2][(y*3)-2]
-	--
 end
 function all_boxes()
 	local out = 0
