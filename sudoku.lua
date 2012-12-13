@@ -1,6 +1,5 @@
 require "Unique"
 require "Index"
-require "socket"
 function get_box(a,b)
 	local box_array = {0,0,0,0,0,0,0,0,0}
 	local full_count = 0
