@@ -1,8 +1,16 @@
-function is_full(a)
-	if (table.getn(a) == 9) and not has_empty(a) then
-		return true
+function is_full(a,b)
+	if b then
+		if (table.getn(a) == 9) and not has_empty(a) then
+			return true
+		else
+			return false
+		end
 	else
-		return false
+		if (table.getn(a) == 9) then
+			return true
+		else
+			return false
+		end
 	end
 end
 function has_empty(a)
@@ -18,14 +26,14 @@ function has_empty(a)
 		return false
 	end
 end
-function unique(a)
+function unique(a,b)
 	--First Unique checks with index_condition() if the input given (a), has both 9 numbers, no less, no more. And if a[] is equeal to " ". if any of these
 	--conditions is forfilled, unique stops the operation, and returns false.
 	--Unique() works out the answer by going through all nine numbers in (), and comparing them to a all numbers from 1 to 9.
 	--Then if unique() finds a connection, it adds 1 to a new index. A binary index is created.
 	--If unique() finds two numbers who are the same, the binary index is broken. and later Unique() revisits this binary index. and if it is now broken
 	--The output is false.
-	if is_full(a) then
+	if is_full(a,b) then
 		local out = 0
 		local count_unique = {0,0,0,0,0,0,0,0,0}
 		for count = 1,9 do	--This method is ineffective, please revisit this code later.
