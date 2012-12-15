@@ -1,5 +1,5 @@
 require "Validate"
-index_validate = {{0,1,0, 0,0,0, 0,0,0}
+index_validate = {{0,0,0, 0,0,0, 0,0,0}
 				 ,{0,0,0, 0,0,0, 0,0,0}
 				 ,{0,0,0, 0,0,0, 0,0,0}
 				 ,{0,0,0, 0,0,0, 0,0,0}
@@ -38,5 +38,3 @@ function insert_field(a,b,c)
 	end
 end
 
-compare_index()
-print_board()
