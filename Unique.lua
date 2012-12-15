@@ -37,24 +37,10 @@ function unique(a,b)
 		local out = 0
 		local count_unique = {0,0,0,0,0,0,0,0,0}
 		for count = 1,9 do	--This method is ineffective, please revisit this code later.
-			if a[count] == 1 then
-				count_unique[1] = count_unique[1] + 1
-			elseif a[count] == 2 then
-				count_unique[2] = count_unique[2] + 1
-			elseif a[count] == 3 then
-				count_unique[3] = count_unique[3] + 1
-			elseif a[count] == 4 then
-				count_unique[4] = count_unique[4] + 1
-			elseif a[count] == 5 then
-				count_unique[5] = count_unique[5] + 1
-			elseif a[count] == 6 then
-				count_unique[6] = count_unique[6] + 1
-			elseif a[count] == 7 then
-				count_unique[7] = count_unique[7] + 1
-			elseif a[count] == 8 then
-				count_unique[8] = count_unique[8] + 1
-			elseif a[count] == 9 then
-				count_unique[9] = count_unique[9] + 1
+			for j = 1,9 do
+				if a[count] == j then
+					count_unique[j] = count_unique[j] + 1
+				end
 			end
 			if count >= 9 then
 				break
