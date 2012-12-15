@@ -12,3 +12,5 @@ This is a work in progress, and cannot be played.
 	-Retrieves original game and indexates all fields.
 	-Inserts numbers in game.
 		-Cannot insert numbers in original fields.
+-Generate_game.lua
+	-Generates a new randomly uncompleted game from a predefined completed game.
