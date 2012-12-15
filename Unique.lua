@@ -36,7 +36,7 @@ function unique(a,b)
 	if is_full(a,b) then
 		local out = 0
 		local count_unique = {0,0,0,0,0,0,0,0,0}
-		for count = 1,9 do	--This method is ineffective, please revisit this code later.
+		for count = 1,9 do
 			for j = 1,9 do
 				if a[count] == j then
 					count_unique[j] = count_unique[j] + 1
