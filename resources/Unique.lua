@@ -38,7 +38,7 @@ function unique(a,b)
 		local count_unique = {0,0,0,0,0,0,0,0,0}
 		for count = 1,9 do
 			for j = 1,9 do
-				if a[count] == j then
+				if force_common(a[count]) == force_common(j) then
 					count_unique[j] = count_unique[j] + 1
 				end
 			end

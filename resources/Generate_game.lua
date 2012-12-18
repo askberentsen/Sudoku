@@ -1,4 +1,3 @@
-require "insert"
 function generate_game(a)
 	if check_board(true) then
 		local seed_generate = seed()
@@ -76,7 +75,7 @@ function write_index(a)
 	end
 	file:close()
 	if not exist then
-		local game = io.open("sudoku_index.txt","a")
+		local game = io.open("resources/sudoku_index.txt","a")
 		local new_array = (file_size/112)+1
 		game:write("#",new_array)
 		for j = 1,9 do
@@ -109,11 +108,13 @@ function force_common(a)
 		out = 8
 	elseif a == "9" then
 		out = 9
+	else
+		out = a
 	end
 	return out
 end
 function read_index(a)
-	local file = io.open("sudoku_index.txt")
+	local file = io.open("resources/sudoku_index.txt")
 	local file_read = file:read()
 	local file_size = file_read:len()
 	local out = false
@@ -159,6 +160,12 @@ function index_count(a,b)
 	end
 	return out
 end
---reset_board()
---write_index(x)
---print_board(read_index(1))
+function import(a)
+	x = a
+end
+function index_all()
+	local file = io.open("resources/sudoku_index.txt")
+	local size = file:read()
+	local length = (size:len())/112
+	return length
+end

@@ -1,4 +1,3 @@
-require "Validate"
 index_validate = {{0,0,0, 0,0,0, 0,0,0}
 				 ,{0,0,0, 0,0,0, 0,0,0}
 				 ,{0,0,0, 0,0,0, 0,0,0}
@@ -37,4 +36,5 @@ function insert_field(a,b,c)
 		print("You cannot change this field")
 	end
 end
+
 

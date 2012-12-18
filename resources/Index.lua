@@ -54,6 +54,9 @@ function print_board(a)
 	print_box_row(3,a)
 	print_row_spec(1)
 end
-function reset_board()
+function reset()
 	x = x_backup
+end
+function backup(a)
+	x_backup = a
 end

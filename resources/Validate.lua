@@ -1,29 +1,22 @@
-require "Unique"
-require "Index"
 function get_box(a,b,c)
 	local box_array = {0,0,0,0,0,0,0,0,0}
 	local full_count = 0
-	for count = 0,2 do
-		for count2 = 0,2 do
+	for j = 0,2 do
+		for i = 0,2 do
 			full_count = full_count + 1
-			cell = x[(a*3)-count][(b*3)-count2]
-			if cell ~= " " then
-				box_array[full_count] = 0 + cell
-			end
+			cell = x[((a*3)-j)][((b*3)-i)]
+			box_array[full_count] = cell
 		end
-
 	end
-	return unique(box_array,c)
-	--a[(x*3)-2][(y*3)-2]
-	--
+	return unique(box_array)
 end
-function all_boxes(a,b)
+function all_boxes(a,print_error)
 	local out = 0
 	for j = 1,3 do
 		for i = 1,3 do
-			if not get_box(j,i,a) then
-				if b then
-					io.write("box "..j.."."..i.." is wrong"); print()
+			if not get_box(j,i) then
+				if print_error then
+					io.write("Box ",j,".",i,", is wrong"); print()
 				end
 				out = out + 1
 			end
@@ -46,13 +39,13 @@ function get_line(a,b)
 	end
 	return out
 end
-function all_lines(input1, input2)
+function all_lines(input1,print_error)
 	local out = 0
 	local a = 0
 	while a < 18 do
 		a = a + 1
 		if not get_line(a,input1) then
-			if input2 then
+			if print_error then
 				io.write("line "..a.." is wrong"); print()
 			end
 			out = out + 1
@@ -67,28 +60,25 @@ end
 
 
 
-function check_board(a,b)
-	if all_lines(a,b) and all_boxes(a,b) then
+function check_board(a,print_error)
+	all_lines(a,print_error); all_boxes(a,print_error)
+	if all_lines(a) and all_boxes(a) then
 		return true
 	else
 		return false
 	end
 end
-function check_game(a)
-	if check_board() and not check_board(true) then
-		if a then
-			print("Looks good so far.")
+function check_game(print_error)
+	if check_board(false) and check_board(1) then --completed game
+		if print_error then
+			print("This game is completed!")
 		end
 		return true
-	elseif check_board() and check_board(true) then
-		if a then
-			print("The game is completed!")
-		end
+	elseif check_board(false) and not check_board(1) then --uncompleted game
+		print("This game looks good so far.")
 		return true
-	else
-		if a then
-			check_board(true,true)
-		end
+	elseif not check_board(false) then --faulty game
+		check_board(1,print_error)
 		return false
 	end
 end
