@@ -1,4 +1,5 @@
 function generate_game(a)
+	math.randomseed( tonumber(tostring(os.time()*os.clock()+seed()):reverse():sub(1,6)) )
 	if check_board(true) then
 		local seed_generate = seed()
 		local seed_percentage = 0
@@ -168,4 +169,12 @@ function index_all()
 	local size = file:read()
 	local length = (size:len())/112
 	return length
+end
+
+function import_random()
+	math.randomseed( tonumber(tostring(os.time()*os.clock()+seed()):reverse():sub(1,6)) )
+	local count = index_all()
+	math.random()
+	local file = math.random(count)
+	import(read_index(file))
 end
