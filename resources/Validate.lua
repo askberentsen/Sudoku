@@ -8,13 +8,13 @@ function get_box(a,b,c)
 			box_array[full_count] = cell
 		end
 	end
-	return unique(box_array)
+	return box_array
 end
 function all_boxes(a,print_error)
 	local out = 0
 	for j = 1,3 do
 		for i = 1,3 do
-			if not get_box(j,i) then
+			if not unique(get_box(j,i)) then
 				if print_error then
 					io.write("Box ",j,".",i,", is wrong"); print()
 				end
@@ -28,14 +28,14 @@ function all_boxes(a,print_error)
 		return true
 	end
 end
-function get_line(a,b)
+function get_line(a)
 	local out = 0
 	if a > 9 then
 		a = a - 9
 		local temp = {x[1][a],x[2][a],x[3][a],x[4][a],x[5][a],x[6][a],x[7][a],x[8][a],x[9][a]}
-		out = unique(temp,b)
+		out = temp
 	else
-		out = unique(x[a],b)
+		out = x[a]
 	end
 	return out
 end
@@ -44,7 +44,7 @@ function all_lines(input1,print_error)
 	local a = 0
 	while a < 18 do
 		a = a + 1
-		if not get_line(a,input1) then
+		if not unique(get_line(a),input1) then
 			if print_error then
 				io.write("line "..a.." is wrong"); print()
 			end
